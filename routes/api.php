@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// Grouping routes under the AttendanceController
+Route::controller(AttendanceController::class)->group(function (){
+
+    // Endpoint for uploading attendance data via POST request
+    Route::post('/uploadAttendanceRecords', 'uploadAttendanceRecords');
+
+    // Endpoint for retrieving employee attendance information via GET request
+    Route::get('/fetchEmployeeAttendance', 'fetchEmployeeAttendance');
+
 });
