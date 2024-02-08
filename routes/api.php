@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\DuplicatesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,6 @@ Route::controller(AttendanceController::class)->group(function (){
     Route::get('/fetchEmployeeAttendance', 'fetchEmployeeAttendance');
 
 });
+
+
+Route::post('/duplicate', [DuplicatesController::class, 'duplicates']);
